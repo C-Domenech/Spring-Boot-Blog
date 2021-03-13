@@ -1,1 +1,1 @@
-# Spring-Boot-Blog
+# Basic Spring Boot Blog
