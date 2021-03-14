@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Blagger</title>
+    <link rel="icon" th:href="@{/images/logo_black.png}">
+    <!--    Bootstrap, jquery and popper libraries-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" th:href="@{'/'}" style="font-size: x-large">
+        <img src="/images/logo_white.png/logo_white.png" th:src="@{/images/logo_white.png}"
+             class="d-inline-block align-middle mr-2" alt="">Blagger</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <span class="navbar-text text-light px-2" style="font-size: large">Bienvenid@ a Blagger!</span>
+            <li class="nav-item  px-2">
+                <a class="nav-link" th:href="@{'/new_post'}" style="font-size: large">Publica un post</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <br>
+    <div class="row" th:each="post: ${posts}">
+        <div class="col-sm-6 mx-auto">
+            <a class="float-right" th:href="@{'/edit_post/'+${post.id_post}}">Editar</a>
+            <h2 th:text="${post.title}"></h2><br>
+            <div><a th:href="@{'/'+${post.username}+'/posts'}"><strong th:text="${post.username}"></strong></a>
+                - <span th:text="${post.getFormattedPublication_dt()}"></span></div>
+            <br>
+            <p th:text="${post.short_description}"></p>
+            <a th:href="@{'/'+${post.id_post}}">Leer más...</a>
+            <hr>
+        </div>
+    </div>
+</div>
+
+</body>
+<footer class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div class="container p-3 pb-0">
+        <section class="mb-2">
+            <!-- Twitter -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://twitter.com/cdomenech_" role="button"
+               target="_blank"><i class="fa fa-twitter"></i></a>
+            <!-- Linkedin -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://www.linkedin.com/in/c-domenech/"
+               role="button" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <!-- Github -->
+            <a class="btn btn-outline-dark btn-floating m-1" href="https://github.com/C-Domenech" role="button"
+               target="_blank"><i class="fa fa-github"></i></a>
+        </section>
+    </div>
+    <div class="text-center p-3 text-light" style="background-color: rgba(0, 0, 0, 0.3);">
+        © 2021 Copyright -
+        <a class="text-light" href="http://thecrisdom.com/" target="_blank">TheCrisdom.com</a>
+    </div>
+</footer>
+</html>
