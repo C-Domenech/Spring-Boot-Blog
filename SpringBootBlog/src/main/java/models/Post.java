@@ -22,7 +22,7 @@ public class Post implements Serializable {
     private String short_description;
     private String content;
     @UpdateTimestamp
-    private Timestamp publication_dt;
+    private Timestamp publication;
 
     public Post() {
     }
@@ -74,12 +74,12 @@ public class Post implements Serializable {
         this.content = content;
     }
 
-    public Timestamp getPublication_dt() {
-        return publication_dt;
+    public Timestamp getPublication() {
+        return publication;
     }
 
-    public void setPublication_dt(Timestamp publication_dt) {
-        this.publication_dt = publication_dt;
+    public void setPublication(Timestamp publication_dt) {
+        this.publication = publication_dt;
     }
 
     @Override
@@ -90,12 +90,12 @@ public class Post implements Serializable {
                 ", title='" + title + '\'' +
                 ", short_description='" + short_description + '\'' +
                 ", content='" + content + '\'' +
-                ", publication_dt=" + publication_dt +
+                ", publication_dt=" + publication +
                 '}';
     }
 
     public String getFormattedPublication_dt() {
-        String formattedTimesatmp = new SimpleDateFormat("E dd MMMM, yyyy HH:mm").format(this.publication_dt);
+        String formattedTimesatmp = new SimpleDateFormat("E dd MMMM, yyyy HH:mm").format(this.publication);
         return formattedTimesatmp;
     }
 }

@@ -2,6 +2,7 @@ package com.cdomenech.springbootblog;
 
 import models.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class MainController {
      */
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("posts", postRepository.findTop5ByOrderByPublication_dtDesc());
+        model.addAttribute("posts", postRepository.findAll(Sort.by(Sort.Direction.DESC, "publication")).subList(0, 5));
         return "index";
     }
 

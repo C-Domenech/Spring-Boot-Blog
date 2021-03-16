@@ -14,8 +14,8 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
 // Method that returns a list of the last 5 posts
-    @Query(value = "SELECT * FROM post ORDER BY publication_dt DESC LIMIT 5", nativeQuery = true)
-    List<Post> findTop5ByOrderByPublication_dtDesc();
+//    @Query(value = "SELECT * FROM post ORDER BY publication_dt DESC LIMIT 5", nativeQuery = true)
+//    List<Post> findTop5ByOrderByPublication_dtDesc();
 
 // Method that returns a list of the posts from a specific author
     List<Post> findPostsByUsername(String username);
